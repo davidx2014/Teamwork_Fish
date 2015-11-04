@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FishMD.DAL
+namespace MySchoolDAL
 {
     public class DBOperator
     {
@@ -12,10 +12,10 @@ namespace FishMD.DAL
 
         public SqlDataReader ReadDB(StringBuilder cmdStr, ref string ErrMsg)
         {
-            DBH.OpenConnection();
             SqlCommand cmd = new SqlCommand(cmdStr.ToString(), DBH.Connection);
             try
             {
+                DBH.OpenConnection();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader != null) { return reader; }
                 else
@@ -33,28 +33,34 @@ namespace FishMD.DAL
 
         public int UpdateDBNQ(StringBuilder cmdStr, ref string ErrMsg)
         {
-            DBH.OpenConnection();
             SqlCommand cmd = new SqlCommand(cmdStr.ToString(), DBH.Connection);
-            try { return (int)cmd.ExecuteNonQuery(); }
+            try
+            {
+                DBH.OpenConnection();
+                return (int)cmd.ExecuteNonQuery();
+            }
             catch (Exception ex)
             {
                 ErrMsg = ex.Message;
                 return -1;
             }
-            finally { DBH.Connection.Close(); }
+            finally { CloseConn(); }
         }
 
         public object ExecSC(StringBuilder cmdStr, ref string ErrMsg)
         {
-            DBH.OpenConnection();
             SqlCommand cmd = new SqlCommand(cmdStr.ToString(), DBH.Connection);
-            try { return cmd.ExecuteScalar(); }
+            try
+            {
+                DBH.OpenConnection();
+                return cmd.ExecuteScalar();
+            }
             catch (Exception ex)
             {
                 ErrMsg = ex.Message;
                 return -1;
             }
-            finally { DBH.Connection.Close(); }
+            finally { CloseConn(); }
         }
 
         private static SqlDataAdapter adapter = new SqlDataAdapter();
@@ -62,7 +68,6 @@ namespace FishMD.DAL
 
         public DataSet FillDs(DataSet DS, StringBuilder sqlCommTxt, string TableName, ref string ErrMsg)
         {
-            DBH.OpenConnection();
             adapter.SelectCommand = new SqlCommand(sqlCommTxt.ToString(), DBH.Connection);
             try
             {
@@ -74,12 +79,27 @@ namespace FishMD.DAL
                 ErrMsg = ex.Message;
                 return null;
             }
-            finally { DBH.Connection.Close(); }
+            finally { CloseConn(); }
+        }
+
+        public DataTable FillDT(DataTable DS, StringBuilder sqlCommTxt, ref string ErrMsg)
+        {
+            adapter.SelectCommand = new SqlCommand(sqlCommTxt.ToString(), DBH.Connection);
+            try
+            {
+                adapter.Fill(DS);
+                return DS;
+            }
+            catch (Exception ex)
+            {
+                ErrMsg = ex.Message;
+                return null;
+            }
+            finally { CloseConn(); }
         }
 
         public bool UpdateDBWithDs(ref DataSet DS, ref string ErrMsg, string TableName)
         {
-            DBH.OpenConnection();
             try
             {
                 builder.GetUpdateCommand();
@@ -91,7 +111,9 @@ namespace FishMD.DAL
                 ErrMsg = ex.Message;
                 return false;
             }
-            finally { DBH.Connection.Close(); }
+            finally { CloseConn(); }
         }
+
+        public void CloseConn() { DBH.Connection.Close(); }
     }
 }
