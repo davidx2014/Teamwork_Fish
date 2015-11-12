@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MySchoolDAL
+namespace FishMD.DAL
 {
     public class DBOperator
     {

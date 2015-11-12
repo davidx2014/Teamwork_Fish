@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace FishMD.DAL
 {
-    struct DBHelper
+    private struct DBHelper
     {
         // 数据库连接字符串
         private string connString;
