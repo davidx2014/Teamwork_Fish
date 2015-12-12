@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Configuration;
 
-namespace FishMD.DAL
+namespace MySchoolDAL
 {
-    private struct DBHelper
+    struct DBHelper : IDBHelper
     {
         // 数据库连接字符串
         private string connString;
@@ -35,6 +35,7 @@ namespace FishMD.DAL
         /// </summary>
         public void OpenConnection()
         {
+            if (Connection == null) { return; }
             if (Connection.State == ConnectionState.Closed)
             {
                 Connection.Open();
@@ -44,6 +45,12 @@ namespace FishMD.DAL
                 Connection.Close();
                 Connection.Open();
             }
+        }
+
+        public void CloseConnection()
+        {
+            if (Connection == null) { return; }
+            if (Connection.State != ConnectionState.Closed) { Connection.Close(); }
         }
     }
 }

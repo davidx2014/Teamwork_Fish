@@ -1,7 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishMD", "FishMD\FishMD.csproj", "{7502E3EE-DE3F-41D6-92DF-0DCB4105E3D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySchoolDAL", "MySchoolDAL\MySchoolDAL.csproj", "{349B880B-AB7F-4156-B789-20DB08169662}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishBLL", "FishBLL\FishBLL.csproj", "{9BA5559E-4208-4540-978A-09479DC6653A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +19,14 @@ Global
 		{7502E3EE-DE3F-41D6-92DF-0DCB4105E3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7502E3EE-DE3F-41D6-92DF-0DCB4105E3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7502E3EE-DE3F-41D6-92DF-0DCB4105E3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{349B880B-AB7F-4156-B789-20DB08169662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{349B880B-AB7F-4156-B789-20DB08169662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{349B880B-AB7F-4156-B789-20DB08169662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{349B880B-AB7F-4156-B789-20DB08169662}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA5559E-4208-4540-978A-09479DC6653A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA5559E-4208-4540-978A-09479DC6653A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA5559E-4208-4540-978A-09479DC6653A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA5559E-4208-4540-978A-09479DC6653A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

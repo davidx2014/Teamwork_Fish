@@ -1,11 +1,13 @@
-﻿using System;
+﻿using MySchoolDAL;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using FishMD.DAL;
 
-namespace FishMD.BLL
+namespace FishBLL
 {
     public class ServiceProvider
     {
@@ -37,7 +39,7 @@ namespace FishMD.BLL
                     }
                     return tmp;
                 }
-                else 
+                else
                 {
                     reader.Close();
                     DBOP.CloseConn();

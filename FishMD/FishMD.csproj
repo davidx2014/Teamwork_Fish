@@ -45,10 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\Fish.cs" />
-    <Compile Include="BLL\ServiceProvider.cs" />
-    <Compile Include="DAL\DBHelper.cs" />
-    <Compile Include="DAL\DBOperator.cs" />
     <Compile Include="data.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataTemplates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FishBLL\FishBLL.csproj">
+      <Project>{9ba5559e-4208-4540-978a-09479dc6653a}</Project>
+      <Name>FishBLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

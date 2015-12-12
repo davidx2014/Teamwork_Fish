@@ -4,11 +4,15 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FishMD.DAL
+namespace MySchoolDAL
 {
-    public class DBOperator
+    public class DBOperator : IDBOperator
     {
-        private DBHelper DBH = new DBHelper();
+        private IDBHelper DBH;
+
+        public DBOperator() { DBH = new DBHelper();}
+
+        public DBOperator(IDBHelper helper) { DBH = helper; }
 
         public SqlDataReader ReadDB(StringBuilder cmdStr, ref string ErrMsg)
         {
@@ -114,6 +118,6 @@ namespace FishMD.DAL
             finally { CloseConn(); }
         }
 
-        public void CloseConn() { DBH.Connection.Close(); }
+        public void CloseConn() { DBH.CloseConnection(); }
     }
 }

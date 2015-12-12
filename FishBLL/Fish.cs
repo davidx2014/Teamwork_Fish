@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FishMD.BLL
+namespace FishBLL
 {
-    class Fish
+    public class Fish
     {
         public int FishID { get; set; }
         public string FishName { get; set; }
